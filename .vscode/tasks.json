@@ -1,0 +1,35 @@
+c{
+	"version": "2.0.0",
+	"tasks": [
+	  {
+		"label": "Generate Header File",
+		"type": "shell",
+		"command": "node",
+		"args": [
+		  "${workspaceFolder}/../generateClass.js",
+		  "${input:className}"
+		],
+		"problemMatcher": [],
+		"group": "build"
+	  },
+	  {
+		"label": "Generate CPP File",
+		"type": "shell",
+		"command": "node",
+		"args": [
+		  "${workspaceFolder}/../implementClass.js",
+		  "${input:className}"
+		],
+		"problemMatcher": [],
+		"group": "build",
+		"dependsOn": "Generate Header File"
+	  }
+	],
+	"inputs": [
+	  {
+		"id": "className",
+		"type": "promptString",
+		"description": "Enter the class name"
+	  }
+	]
+  }
